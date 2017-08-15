@@ -18,14 +18,14 @@ app.use(bodyParser.json({type: 'application/x-www-form-urlencoded'}))
 
 app.use(cors());
 
-//const articles = require('./routes/articles')		// cek
-//const registrations = require('./routes/registrations')		// cek
+const articles = require('./routes/articles')
+const registrations = require('./routes/registrations')
 
 app.get('/', function(req,res){
   res.send('express is listening')
 })
 
-//app.use('/registrations', registrations)				//cek
-//app.use('/articles', articles)				//cek
+app.use('/registrations', registrations)
+app.use('/articles', articles)				
 
 app.listen(3000)
