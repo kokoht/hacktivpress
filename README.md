@@ -23,8 +23,6 @@ List of articles Routes:
 
 
 
-
-
 ## USAGE:
 npm install in client & server
 npm start on server
