@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> hactivpress </title>
+    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css">
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="col-md-12 text-center">
+        <h2> welcome </h2>
+      </div>
+      <h3> list article: </h3>
+      <div class="col l7 right-align">
+        <table class="highlight centered responsive-table">
+          <thead>
+            <tr>
+              <th> title </th>
+              <th> content </th>
+              <th> category </th>
+              <th> author </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="article in articles" class="hoverable">
+              <td>{{ article.title }}</td>]
+              <td>{{ article.content}}</td>
+              <td>{{ article.category}}</td>
+              <td>{{ article.author}}</td>
+              <td>
+                <a v-on:click="updateArticle(article._id)"> edit </a>
+                <a v-on:click="deleteArticle(article._id)">delete</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3> Here to add article: </h3>
+        <form method="post" @submit.prevent="addArticle">
+          <label>title</label>
+          <input type="text" v-model="title" name="title" placeholder="title">
+          <label>content</label>
+          <input type="text" v-model="content" name="content" placeholder="content">
+          <label>category</label>
+          <input type="text" v-model="category" name="category" placeholder="category">
+          <label>author</label>
+          <input type="text" v-model="author" name="author" placeholder="author">
+          <button type="submit" class="btn btn info"> add </button>
+        </form>
+
+        <h3> Here to edit article: </h3>
+          <form method="post" @submit.prevent="updateArticle">
+            <label>title</label>
+            <input type="text" v-model="title" name="title" placeholder="title">
+            <label>content</label>
+            <input type="text" v-model="content" name="content" placeholder="content">
+            <label>category</label>
+            <input type="text" v-model="category" name="category" placeholder="category">
+            <label>author</label>
+            <input type="text" v-model="author" name="author" placeholder="author">
+            <button type="submit" class="btn btn info"> add </button>
+          </form>
+    </div>
+    <script type="text/javascript">
+      const art = new Vue ({
+        el: '#app',
+        created: function() {
+          let self = this;
+          axios.get('http://localhost:3000/articles')
+          .then( response => {
+            self.articles = response.data
+          })
+        },
+        data: {
+          articles: [],
+          title: '',
+          content:'',
+          category:'',
+          editedObject: '',
+          author:''
+        },
+        methods: {
+          addArticle: function() {
+            let self = this;
+            axios.post('http://localhost:3000/articles', {
+              title: self.title,
+              content: self.content,
+              category: self.category,
+              author: self.author
+            })
+            .then( response => {
+              console.log(response.data);
+            })
+          },
+          deleteArticle: function(id) {
+            let self: this;
+            axios.delete(`http://localhost:3000/articles/${id}`)
+            .then(response => {
+              console.log(response);
+            })
+          }
+
+        }
+      })
+
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- aaaaaaa -->

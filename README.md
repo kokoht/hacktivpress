@@ -30,4 +30,8 @@ npm install in client & server
 npm start on server
 npm run dev on client
 
+or
+
+live-server signup.html
+
 Access the wes via http://localhost:3000
