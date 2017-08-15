@@ -16,11 +16,13 @@ List of registrations Routes:
 
 List of articles Routes:        
 
-| Route                   | HTTP  | Description             |
-| ----------------------  |:-----:|:-----------------------:|
-| /articles/              | get   | find all articles       |
-| /articles/              | post  | create articles         |
-
+| Route                   | HTTP   | Description             |
+| ----------------------  |:------:|:-----------------------:|
+| /articles/              | GET    | find all articles       |
+| /articles/              | POST   | create articles         |
+| /articles/:id           | GET    | find by id article      |
+| /articles/:id           | PUT    | update article by id    |
+| /articles/:id           | DELETE | delete article by id    |
 
 
 ## USAGE:
