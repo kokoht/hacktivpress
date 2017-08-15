@@ -7,13 +7,20 @@ Hacktivpress App
 
 
 List of registrations Routes:
-| Route        | HTTP  | Description             |
-|:------------:|:-----:|:-----------------------:|
 
+| Route                   | HTTP  | Description             |
+| ----------------------  |:-----:|:-----------------------:|
+| /registrations/signup   | post  | signup                  |
+| /registrations/signin   | post  | signin                  |
 
 
 List of articles Routes:        
-| Route      | HTTP  | Description
+
+| Route                   | HTTP  | Description             |
+| ----------------------  |:-----:|:-----------------------:|
+| /articles/              | get   | find all articles       |
+| /articles/              | post  | create articles         |
+
 
 
 
